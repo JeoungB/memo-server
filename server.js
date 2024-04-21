@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.json()); // json 형식을 해석하기 위해 사용. 안쓰면 req.body = undefined 로 나옴.
 app.use(express.urlencoded({ extended: false })); // url 해석을 위해 사용.
@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname + "/public"))); // 백엔드의 정�
 app.use(cors({ origin: "*" })); // cors 허용. 모든 출저 허용 옵션 : origin.
 
 app.listen(PORT, function () {
-  console.log("listening on 8080");
+  console.log("listening on 8080!!!");
 });
 
 // multer : 파일 업로드를 위한 미들웨어.
@@ -41,5 +41,5 @@ app.post("/img", upload.single("img"), (req, res) => {
 });
 
 app.get('/', function(req, res) {
-   res.send("hlloe server");
+   res.send("hello server");
 })
