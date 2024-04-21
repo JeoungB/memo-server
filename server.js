@@ -36,7 +36,7 @@ app.post("/img", upload.single("img"), (req, res) => {
   console.log("전달받은 파일", req.file);
   console.log("저장된 파일의 이름", req.file.filename);
 
-  const IMG_URL = `http://localhost:8080/uploadImgs/${req.file.filename}`;
+  const IMG_URL = `/uploadImgs/${req.file.filename}`;
   res.json({ url: IMG_URL });
 });
 
